@@ -19,5 +19,19 @@ foreach ($storageDirs as $dir) {
     }
 }
 
+// Redirect Laravel bootstrap cache files to writeable /tmp directory
+$bootstrapCacheDir = '/tmp/storage/bootstrap/cache';
+$_ENV['APP_SERVICES_CACHE'] = $bootstrapCacheDir . '/services.php';
+$_ENV['APP_PACKAGES_CACHE'] = $bootstrapCacheDir . '/packages.php';
+$_ENV['APP_CONFIG_CACHE'] = $bootstrapCacheDir . '/config.php';
+$_ENV['APP_ROUTES_CACHE'] = $bootstrapCacheDir . '/routes.php';
+$_ENV['APP_EVENTS_CACHE'] = $bootstrapCacheDir . '/events.php';
+
+putenv("APP_SERVICES_CACHE=" . $_ENV['APP_SERVICES_CACHE']);
+putenv("APP_PACKAGES_CACHE=" . $_ENV['APP_PACKAGES_CACHE']);
+putenv("APP_CONFIG_CACHE=" . $_ENV['APP_CONFIG_CACHE']);
+putenv("APP_ROUTES_CACHE=" . $_ENV['APP_ROUTES_CACHE']);
+putenv("APP_EVENTS_CACHE=" . $_ENV['APP_EVENTS_CACHE']);
+
 // Require the Laravel frontend bootstrap index file
 require __DIR__ . '/../public/index.php';

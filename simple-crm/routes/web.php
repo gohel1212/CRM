@@ -71,4 +71,15 @@ Route::middleware(['auth'])->group(function () {
 // Include admin routes
 require __DIR__.'/admin.php';
 
+Route::get('/test-assets', function () {
+    try {
+        return [
+            'css' => \Illuminate\Support\Facades\Vite::asset('resources/css/app.css'),
+            'js' => \Illuminate\Support\Facades\Vite::asset('resources/js/app.js'),
+        ];
+    } catch (\Exception $e) {
+        return 'Error: ' . $e->getMessage();
+    }
+});
+
 

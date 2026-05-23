@@ -1,8 +1,9 @@
 <?php
 
-// Suppress deprecation warnings and disable display_errors in production
-error_reporting(E_ALL & ~E_DEPRECATED & ~E_USER_DEPRECATED);
-ini_set('display_errors', '0');
+// Enable error display for debugging
+error_reporting(E_ALL);
+ini_set('display_errors', '1');
+ini_set('log_errors', '1');
 
 // Vercel serverless workaround: Create storage folders in writeable /tmp directory
 $storageDirs = [

@@ -55,4 +55,8 @@ else
   flutter build web --release
 fi
 
+echo "=== Moving build/web to public ==="
+rm -rf public
+mv build/web public
+
 echo "=== Build Finished Successfully ==="

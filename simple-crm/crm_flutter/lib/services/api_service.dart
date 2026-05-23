@@ -8,7 +8,16 @@ import '../models/customer.dart';
 import '../models/dashboard_stats.dart';
 
 class ApiService {
-  static const String baseUrl = String.fromEnvironment('API_BASE_URL', defaultValue: 'http://127.0.0.1:3000/api');
+  static String get baseUrl {
+    const definedUrl = String.fromEnvironment('API_BASE_URL');
+    if (definedUrl.isNotEmpty) {
+      return definedUrl;
+    }
+    if (kIsWeb) {
+      return '${Uri.base.origin}/api';
+    }
+    return 'http://127.0.0.1:3000/api';
+  }
   
   // Get auth token from shared preferences
   static Future<String?> _getAuthToken() async {

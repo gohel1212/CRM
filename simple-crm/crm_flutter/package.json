@@ -1,0 +1,19 @@
+{
+  "name": "crm-flutter-vercel",
+  "version": "1.0.0",
+  "description": "Vercel serverless backend and deployment configuration for Flutter CRM",
+  "main": "api/index.js",
+  "scripts": {
+    "build": "prisma generate"
+  },
+  "dependencies": {
+    "@prisma/client": "^5.14.0",
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
+    "jsonwebtoken": "^9.0.2"
+  },
+  "devDependencies": {
+    "prisma": "^5.14.0"
+  }
+}

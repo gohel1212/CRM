@@ -15,6 +15,12 @@ echo "=== System Info ==="
 uname -a
 echo "Current Directory: $PWD"
 
+echo "=== Installing Node.js Dependencies (for Prisma) ==="
+npm install
+
+echo "=== Generating Prisma Client ==="
+npx prisma generate
+
 echo "=== Installing/Updating Flutter SDK ==="
 if [ -d "$FLUTTER_DIR" ]; then
   echo "Flutter directory already exists at $FLUTTER_DIR. Fetching updates..."

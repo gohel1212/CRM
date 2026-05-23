@@ -71,12 +71,4 @@ Route::middleware(['auth'])->group(function () {
 // Include admin routes
 require __DIR__.'/admin.php';
 
-// Temporary route to run migrations in Vercel
-Route::get('/run-migrations', function () {
-    try {
-        \Illuminate\Support\Facades\Artisan::call('migrate', ['--force' => true]);
-        return 'Migrations run successfully: <br><pre>' . \Illuminate\Support\Facades\Artisan::output() . '</pre>';
-    } catch (\Exception $e) {
-        return 'Error running migrations (v3): ' . $e->getMessage();
-    }
-});
+

@@ -144,14 +144,14 @@ app.get('/api/dashboard', authenticateToken, async (req, res) => {
     const activeCustomers = await prisma.customer.count({
       where: {
         userId: req.userId,
-        status: 'Active',
+        status: { equals: 'Active', mode: 'insensitive' },
       },
     });
 
     const potentialCustomers = await prisma.customer.count({
       where: {
         userId: req.userId,
-        status: 'Potential',
+        status: { equals: 'Potential', mode: 'insensitive' },
       },
     });
 

@@ -77,6 +77,6 @@ Route::get('/run-migrations', function () {
         \Illuminate\Support\Facades\Artisan::call('migrate', ['--force' => true]);
         return 'Migrations run successfully: <br><pre>' . \Illuminate\Support\Facades\Artisan::output() . '</pre>';
     } catch (\Exception $e) {
-        return 'Error running migrations: ' . $e->getMessage();
+        return 'Error running migrations (v3): ' . $e->getMessage();
     }
 });

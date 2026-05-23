@@ -8,10 +8,12 @@ return new class extends Migration
 {
     public function up()
     {
-        // Drop foreign key constraints first
-        Schema::table('custom_field_values', function (Blueprint $table) {
-            $table->dropForeign(['custom_field_id']);
-        });
+        // Drop foreign key constraints first if the table exists
+        if (Schema::hasTable('custom_field_values')) {
+            Schema::table('custom_field_values', function (Blueprint $table) {
+                $table->dropForeign(['custom_field_id']);
+            });
+        }
         
         // Drop unused tables
         Schema::dropIfExists('opportunities');

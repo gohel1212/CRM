@@ -73,7 +73,10 @@ require __DIR__.'/admin.php';
 
 Route::get('/run-seeds', function () {
     try {
-        \Illuminate\Support\Facades\Artisan::call('db:seed', ['--force' => true]);
+        \Illuminate\Support\Facades\Artisan::call('db:seed', [
+            '--class' => 'Database\\Seeders\\AdminUserSeeder',
+            '--force' => true
+        ]);
         return 'Seeds run successfully: <br><pre>' . \Illuminate\Support\Facades\Artisan::output() . '</pre>';
     } catch (\Exception $e) {
         return 'Error running seeds: ' . $e->getMessage();

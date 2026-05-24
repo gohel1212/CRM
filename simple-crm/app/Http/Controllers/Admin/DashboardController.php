@@ -121,7 +121,7 @@ class DashboardController extends Controller
 
         // Monthly Revenue Chart Data
         $monthly_revenue = Deal::select(
-            DB::raw('MONTH(created_at) as month'),
+            DB::raw('EXTRACT(MONTH FROM created_at) as month'),
             DB::raw('SUM(amount) as revenue')
         )
             ->whereYear('created_at', now()->year)
